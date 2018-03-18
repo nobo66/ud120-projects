@@ -46,6 +46,10 @@ print "predict time:", round(time() - t0, 3), "s"
 from sklearn.metrics import accuracy_score
 accuracy = accuracy_score(labels_test, predict)
 print("accuracy is {0}".format(accuracy))
+#print("\ndata={0}".format(features_test))
+#print("\nlabel={0}".format(labels_test))
+#print("\npredict={0}".format(predict))
+print("\nprediction(10,26,50)=({0},{1},{2})".format(predict[10], predict[26], predict[50]))
 #########################################################
 
 
