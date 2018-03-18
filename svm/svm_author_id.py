@@ -24,8 +24,8 @@ features_train, features_test, labels_train, labels_test = preprocess()
 
 #########################################################
 ### your code goes here ###
-features_train = features_train[:len(features_train)/100] 
-labels_train = labels_train[:len(labels_train)/100] 
+#features_train = features_train[:len(features_train)/100] 
+#labels_train = labels_train[:len(labels_train)/100] 
 import numpy as np
 from sklearn.svm import SVC
 clf = SVC(kernel='rbf',
@@ -50,6 +50,8 @@ print("accuracy is {0}".format(accuracy))
 #print("\nlabel={0}".format(labels_test))
 #print("\npredict={0}".format(predict))
 print("\nprediction(10,26,50)=({0},{1},{2})".format(predict[10], predict[26], predict[50]))
+unique, counts = np.unique(predict, return_counts=True)
+print("\ncounts(0:Sara, 1:Chris): {0}".format(dict(zip(unique, counts))))
 #########################################################
 
 
