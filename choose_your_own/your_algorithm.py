@@ -24,13 +24,16 @@ plt.scatter(grade_slow, bumpy_slow, color = "r", label="slow")
 plt.legend()
 plt.xlabel("bumpiness")
 plt.ylabel("grade")
-plt.show()
+#plt.show()
 ################################################################################
 
 
 ### your code here!  name your classifier object clf if you want the 
 ### visualization code (prettyPicture) to show you the decision boundary
-
+from sklearn.neighbors.nearest_centroid import NearestCentroid
+import numpy as np
+clf = NearestCentroid()
+clf.fit(features_train, labels_train)
 
 
 
@@ -40,5 +43,9 @@ plt.show()
 
 try:
     prettyPicture(clf, features_test, labels_test)
+    from PIL import Image
+    im = Image.open("./test.png")
+    im.show()
 except NameError:
+    print("ecception occured!!")
     pass
