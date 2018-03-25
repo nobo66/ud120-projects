@@ -30,22 +30,35 @@ plt.ylabel("grade")
 
 ### your code here!  name your classifier object clf if you want the 
 ### visualization code (prettyPicture) to show you the decision boundary
-from sklearn.neighbors.nearest_centroid import NearestCentroid
-import numpy as np
-clf = NearestCentroid()
-clf.fit(features_train, labels_train)
+
+def predict_with_nearest_neighbors():
+	from sklearn.neighbors.nearest_centroid import NearestCentroid
+	import numpy as np
+	clf = NearestCentroid()
+	clf.fit(features_train, labels_train)
+	show_result(clf, "test_nn.png")
+
+
+def predict_with_random_forest():
+	from sklearn.ensemble import RandomForestClassifier
+	import numpy as np
+	clf = RandomForestClassifier(max_depth=2, random_state=0)
+	clf.fit(features_train, labels_train)
+	show_result(clf, "test_rf.png")
 
 
 
 
+def show_result(clf, o_file_name="test.png"):
+    try:
+        prettyPicture(clf, features_test, labels_test, o_file_name)
+    	from PIL import Image
+    	im = Image.open("./test.png")
+    	im.show()
+    except NameError:
+    	print("ecception occured!!")
+    	pass
 
 
-
-try:
-    prettyPicture(clf, features_test, labels_test)
-    from PIL import Image
-    im = Image.open("./test.png")
-    im.show()
-except NameError:
-    print("ecception occured!!")
-    pass
+predict_with_random_forest()
+#predict_with_nearest_neighbors()
