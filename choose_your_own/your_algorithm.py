@@ -36,29 +36,58 @@ def predict_with_nearest_neighbors():
 	import numpy as np
 	clf = NearestCentroid()
 	clf.fit(features_train, labels_train)
-	show_result(clf, "test_nn.png")
+	# predict
+	predict = clf.predict(features_test)
+	# accuracy
+	from sklearn.metrics import accuracy_score
+	accuracy = accuracy_score(labels_test, predict)
+	file_name = "test_nn_01_ac{0}.png".format(accuracy)
+	print("The accuracy of nearest neighbors is {0}".format(accuracy))
+	show_result(clf, file_name)
 
 
 def predict_with_random_forest():
 	from sklearn.ensemble import RandomForestClassifier
 	import numpy as np
-	clf = RandomForestClassifier(max_depth=2, random_state=0)
+	clf = RandomForestClassifier()
+	#clf = RandomForestClassifier(max_depth=2, random_state=0)
 	clf.fit(features_train, labels_train)
-	show_result(clf, "test_rf.png")
+	# predict
+	predict = clf.predict(features_test)
+	# accuracy
+	from sklearn.metrics import accuracy_score
+	accuracy = accuracy_score(labels_test, predict)
+	file_name = "test_rf_02_ac{0}.png".format(accuracy)
+	print("The accuracy of random forest is {0}".format(accuracy))
+	show_result(clf, file_name)
 
 
+def predict_with_ada_boost():
+	from sklearn.ensemble import AdaBoostClassifier
+	import numpy as np
+	clf = AdaBoostClassifier()
+	clf.fit(features_train, labels_train)
+	# predict
+	predict = clf.predict(features_test)
+	# accuracy
+	from sklearn.metrics import accuracy_score
+	accuracy = accuracy_score(labels_test, predict)
+	file_name = "test_ab_01_ac{0}.png".format(accuracy)
+	print("The accuracy of ada boost is {0}".format(accuracy))
+	show_result(clf, file_name)
 
 
 def show_result(clf, o_file_name="test.png"):
     try:
         prettyPicture(clf, features_test, labels_test, o_file_name)
     	from PIL import Image
-    	im = Image.open("./test.png")
+    	im = Image.open("./"+o_file_name)
     	im.show()
     except NameError:
     	print("ecception occured!!")
     	pass
 
 
+predict_with_ada_boost()
 predict_with_random_forest()
-#predict_with_nearest_neighbors()
+predict_with_nearest_neighbors()
