@@ -30,12 +30,16 @@ plt.ylabel("grade")
 
 ### your code here!  name your classifier object clf if you want the 
 ### visualization code (prettyPicture) to show you the decision boundary
+import sys
+from time import time
+import numpy as np
 
 def predict_with_nearest_neighbors():
 	from sklearn.neighbors.nearest_centroid import NearestCentroid
-	import numpy as np
 	clf = NearestCentroid()
+	t0 = time()
 	clf.fit(features_train, labels_train)
+	print("training time for nearest neighbors is {0}s".format(round(time() - t0, 3)))
 	# predict
 	predict = clf.predict(features_test)
 	# accuracy
@@ -48,10 +52,11 @@ def predict_with_nearest_neighbors():
 
 def predict_with_random_forest():
 	from sklearn.ensemble import RandomForestClassifier
-	import numpy as np
 	clf = RandomForestClassifier()
+	t0 = time()
 	#clf = RandomForestClassifier(max_depth=2, random_state=0)
 	clf.fit(features_train, labels_train)
+	print("training time for random forest is {0}s".format(round(time() - t0, 3)))
 	# predict
 	predict = clf.predict(features_test)
 	# accuracy
@@ -64,9 +69,10 @@ def predict_with_random_forest():
 
 def predict_with_ada_boost():
 	from sklearn.ensemble import AdaBoostClassifier
-	import numpy as np
 	clf = AdaBoostClassifier()
+	t0 = time()
 	clf.fit(features_train, labels_train)
+	print("training time for ada boost is {0}s".format(round(time() - t0, 3)))
 	# predict
 	predict = clf.predict(features_test)
 	# accuracy
@@ -88,6 +94,6 @@ def show_result(clf, o_file_name="test.png"):
     	pass
 
 
-predict_with_ada_boost()
-predict_with_random_forest()
 predict_with_nearest_neighbors()
+predict_with_random_forest()
+predict_with_ada_boost()
