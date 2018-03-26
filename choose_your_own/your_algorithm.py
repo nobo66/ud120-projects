@@ -32,6 +32,7 @@ plt.ylabel("grade")
 ### visualization code (prettyPicture) to show you the decision boundary
 import sys
 from time import time
+from sklearn.metrics import accuracy_score
 import numpy as np
 
 def predict_with_nearest_neighbors():
@@ -39,14 +40,13 @@ def predict_with_nearest_neighbors():
 	clf = NearestCentroid()
 	t0 = time()
 	clf.fit(features_train, labels_train)
-	print("training time for nearest neighbors is {0}s".format(round(time() - t0, 3)))
+	print("training time:{0}s(nearest neighbors)".format(round(time() - t0, 3)))
 	# predict
 	predict = clf.predict(features_test)
 	# accuracy
-	from sklearn.metrics import accuracy_score
 	accuracy = accuracy_score(labels_test, predict)
-	file_name = "test_nn_01_ac{0}.png".format(accuracy)
-	print("The accuracy of nearest neighbors is {0}".format(accuracy))
+	file_name = "ac{0:.3f}_nn_01.png".format(accuracy)
+	print("accuracy:{0:.3f}(nearest neighbors)".format(accuracy))
 	show_result(clf, file_name)
 
 
@@ -56,14 +56,13 @@ def predict_with_random_forest():
 	t0 = time()
 	#clf = RandomForestClassifier(max_depth=2, random_state=0)
 	clf.fit(features_train, labels_train)
-	print("training time for random forest is {0}s".format(round(time() - t0, 3)))
+	print("training time:{0}s(random forest)".format(round(time() - t0, 3)))
 	# predict
 	predict = clf.predict(features_test)
 	# accuracy
-	from sklearn.metrics import accuracy_score
 	accuracy = accuracy_score(labels_test, predict)
-	file_name = "test_rf_02_ac{0}.png".format(accuracy)
-	print("The accuracy of random forest is {0}".format(accuracy))
+	file_name = "ac{0:.3f}_rf_01.png".format(accuracy)
+	print("accuracy:{0:.3f}(random forest)".format(accuracy))
 	show_result(clf, file_name)
 
 
@@ -72,23 +71,68 @@ def predict_with_ada_boost():
 	clf = AdaBoostClassifier()
 	t0 = time()
 	clf.fit(features_train, labels_train)
-	print("training time for ada boost is {0}s".format(round(time() - t0, 3)))
+	print("training time:{0}s(ada boost)".format(round(time() - t0, 3)))
 	# predict
 	predict = clf.predict(features_test)
 	# accuracy
-	from sklearn.metrics import accuracy_score
 	accuracy = accuracy_score(labels_test, predict)
-	file_name = "test_ab_01_ac{0}.png".format(accuracy)
-	print("The accuracy of ada boost is {0}".format(accuracy))
+	file_name = "ac{0:.3f}_ab_01.png".format(accuracy)
+	print("accuracy:{0:.3f}(ada boost)".format(accuracy))
+	show_result(clf, file_name)
+
+
+def predict_with_decision_tree():
+	from sklearn import tree
+	clf = tree.DecisionTreeClassifier()
+	t0 = time()
+	clf.fit(features_train, labels_train)
+	print("training time:{0}s(decision tree)".format(round(time() - t0, 3)))
+	# predict
+	predict = clf.predict(features_test)
+	# accuracy
+	accuracy = accuracy_score(labels_test, predict)
+	file_name = "ac{0:.3f}_dt_01.png".format(accuracy)
+	print("accuracy:{0:.3f}(decision tree)".format(accuracy))
+	show_result(clf, file_name)
+
+
+def predict_with_svm():
+	from sklearn.svm import SVC
+	clf = SVC()
+	t0 = time()
+	clf.fit(features_train, labels_train)
+	print("training time:{0}s(svm)".format(round(time() - t0, 3)))
+	# predict
+	predict = clf.predict(features_test)
+	# accuracy
+	accuracy = accuracy_score(labels_test, predict)
+	file_name = "ac{0:.3f}_svm_01.png".format(accuracy)
+	print("accuracy:{0:.3f}(svm)".format(accuracy))
+	show_result(clf, file_name)
+
+
+def predict_with_naive_bayes():
+	from sklearn.naive_bayes import GaussianNB
+	clf = GaussianNB()
+	t0 = time()
+	clf.fit(features_train, labels_train)
+	print("training time:{0}s(naive bayes)".format(round(time() - t0, 3)))
+	# predict
+	predict = clf.predict(features_test)
+	# accuracy
+	accuracy = accuracy_score(labels_test, predict)
+	file_name = "ac{0:.3f}_nb_01.png".format(accuracy)
+	print("accuracy:{0:.3f}(naive bayes)".format(accuracy))
 	show_result(clf, file_name)
 
 
 def show_result(clf, o_file_name="test.png"):
     try:
+	plt.figure()
         prettyPicture(clf, features_test, labels_test, o_file_name)
     	from PIL import Image
     	im = Image.open("./"+o_file_name)
-    	im.show()
+    	#im.show()
     except NameError:
     	print("ecception occured!!")
     	pass
@@ -97,3 +141,6 @@ def show_result(clf, o_file_name="test.png"):
 predict_with_nearest_neighbors()
 predict_with_random_forest()
 predict_with_ada_boost()
+predict_with_decision_tree()
+predict_with_svm()
+predict_with_naive_bayes()
