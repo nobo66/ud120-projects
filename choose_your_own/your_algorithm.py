@@ -34,7 +34,12 @@ import sys
 from time import time
 from sklearn.metrics import accuracy_score
 import numpy as np
+from pprint import pprint, pformat
+import datetime
+now = datetime.datetime.now()
+print(now.strftime("%Y%m%d_%H%M_%S"))
 
+log_file = open('log_{0}.txt'.format(now.strftime("%Y%m%d_%H%M_%S")), 'w')
 def predict_with_nearest_neighbors():
 	from sklearn.neighbors.nearest_centroid import NearestCentroid
 	clf = NearestCentroid()
@@ -52,23 +57,34 @@ def predict_with_nearest_neighbors():
 
 def predict_with_random_forest():
 	from sklearn.ensemble import RandomForestClassifier
-	clf = RandomForestClassifier()
+	#clf = RandomForestClassifier()
+	# No2
+	clf = RandomForestClassifier(
+				n_estimators=100, 
+				#criterion="entropy",
+				)
 	t0 = time()
-	#clf = RandomForestClassifier(max_depth=2, random_state=0)
 	clf.fit(features_train, labels_train)
 	print("training time:{0}s(random forest)".format(round(time() - t0, 3)))
+	log_file.write("training time:{0}s(random forest)".format(round(time() - t0, 3)))
 	# predict
 	predict = clf.predict(features_test)
 	# accuracy
 	accuracy = accuracy_score(labels_test, predict)
-	file_name = "ac{0:.3f}_rf_01.png".format(accuracy)
+	file_name = "ac{0:.3f}_rf_02.png".format(accuracy)
 	print("accuracy:{0:.3f}(random forest)".format(accuracy))
+	log_file.write("accuracy:{0:.3f}(random forest)".format(accuracy))
+	log_file.write(pformat(clf))
 	show_result(clf, file_name)
 
 
 def predict_with_ada_boost():
 	from sklearn.ensemble import AdaBoostClassifier
 	clf = AdaBoostClassifier()
+	clf = AdaBoostClassifier(
+				n_estimators=500
+
+				)
 	t0 = time()
 	clf.fit(features_train, labels_train)
 	print("training time:{0}s(ada boost)".format(round(time() - t0, 3)))
@@ -76,7 +92,7 @@ def predict_with_ada_boost():
 	predict = clf.predict(features_test)
 	# accuracy
 	accuracy = accuracy_score(labels_test, predict)
-	file_name = "ac{0:.3f}_ab_01.png".format(accuracy)
+	file_name = "ac{0:.3f}_ab_02.png".format(accuracy)
 	print("accuracy:{0:.3f}(ada boost)".format(accuracy))
 	show_result(clf, file_name)
 
@@ -144,3 +160,4 @@ predict_with_ada_boost()
 predict_with_decision_tree()
 predict_with_svm()
 predict_with_naive_bayes()
+log_file.close()
