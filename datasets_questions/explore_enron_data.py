@@ -32,5 +32,11 @@ print("How many email messages do we have from Wesley Colwell to persons of inte
 	"\nAnswer:{0}".format(enron_data['COLWELL WESLEY']['from_this_person_to_poi']))
 print("What's the value of stock options exercised by Jeffrey K Skilling?"
 	"\nAnswer:{0}".format(enron_data['SKILLING JEFFREY K']['exercised_stock_options']))
+print("How much of total_payments of Jeffery Lay?"\
+	"\nAnswer:{0}".format(enron_data['SKILLING JEFFREY K']['total_payments']))
+print("How much of total_payments of Kenneth Lay?"\
+	"\nAnswer:{0}".format(enron_data['LAY KENNETH L']['total_payments']))
+print("How much of total_payments of Andrew Fastow?"\
+	"\nAnswer:{0}".format(enron_data['FASTOW ANDREW S']['total_payments']))
 #print(""\
 #	"\nAnswer:{0}".format(enron_data['']['']))
