@@ -40,3 +40,17 @@ print("How much of total_payments of Andrew Fastow?"\
 	"\nAnswer:{0}".format(enron_data['FASTOW ANDREW S']['total_payments']))
 #print(""\
 #	"\nAnswer:{0}".format(enron_data['']['']))
+#Lesson6-27
+number_of_people = len(enron_data)
+quantified_salary = 0
+for features in enron_data.values():
+	salary = features["salary"]
+	if salary != "NaN":
+		quantified_salary += 1
+print("Number of quantified salary is {0}".format(quantified_salary))
+quantified_salary = 0
+for features in enron_data.values():
+	salary = features["salary"]
+	if salary != "NaN":
+		quantified_salary += 1
+print("Number of quantified salary is {0}".format(quantified_salary))
