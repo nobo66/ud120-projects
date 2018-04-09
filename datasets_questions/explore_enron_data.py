@@ -48,9 +48,31 @@ for features in enron_data.values():
 	if salary != "NaN":
 		quantified_salary += 1
 print("Number of quantified salary is {0}".format(quantified_salary))
-quantified_salary = 0
+#Lesson6-28
+email_address = 0
 for features in enron_data.values():
-	salary = features["salary"]
-	if salary != "NaN":
-		quantified_salary += 1
-print("Number of quantified salary is {0}".format(quantified_salary))
+	email = features["email_address"]
+	if email != "NaN":
+		email_address += 1
+print("Number of email is {0}".format(email_address))
+#Lesson6-29
+quantified_total_payments = 0
+for features in enron_data.values():
+	indivisual_total_payment = features["total_payments"]
+	if indivisual_total_payment != "NaN":
+		quantified_total_payments += 1
+percentage_of_NaN = float(number_of_people - quantified_total_payments)/number_of_people*100
+print("Percentage of NaN in total payments is {0}".format(percentage_of_NaN))
+#Lesson6-30
+quantified_tp_for_poi = 0
+for features in enron_data.values():
+	indivisual_total_payment = features["total_payments"]
+	if indivisual_total_payment != "NaN" and features["poi"]:
+		quantified_tp_for_poi += 1
+percentage_of_poi_NaN = float(num_of_POI - quantified_tp_for_poi)/num_of_POI*100
+print("Percentage of NaN in POI's total payments is {0}".format(percentage_of_poi_NaN))
+#Lesson6-32
+number_of_people += 10
+number_of_tp_NaN = number_of_people - quantified_total_payments
+print("Updated number of people is {0}".format(number_of_people))
+print("Updated number of NaN in total payments is {0}".format(number_of_tp_NaN))
