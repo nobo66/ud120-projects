@@ -37,9 +37,15 @@ test_color = "r"
 ### Please name it reg, so that the plotting code below picks it up and 
 ### plots it correctly. Don't forget to change the test_color above from "b" to
 ### "r" to differentiate training points from test points.
-
-
-
+from sklearn import linear_model
+import pdb
+pdb.set_trace()
+reg = linear_model.LinearRegression()
+reg.fit(feature_train, target_train)
+pdb.set_trace()
+print("Params of LinearRegression={0}".format(reg.get_params()))
+print("reg.coef_={0}".format(reg.coef_))
+print("reg.intercept_={0}".format(reg.intercept_))
 
 
 
