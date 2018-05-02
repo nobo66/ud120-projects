@@ -57,8 +57,14 @@ pred = reg.predict(feature_test)
 #for i in range(len(feature_train):
 #	for j in range(len(2):
 #		combined_train[i][0] = feature_
-score = reg.score(feature_train, target_train)
-print("score={0}".format(score))
+# score with train data
+score_train = reg.score(feature_train, target_train)
+print("score with train data={0}".format(score_train))
+
+# score with test data
+score_test = reg.score(feature_test, target_test)
+print("score with test data={0}".format(score_test))
+
 pdb.set_trace()
 
 
