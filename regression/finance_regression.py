@@ -39,13 +39,27 @@ test_color = "r"
 ### "r" to differentiate training points from test points.
 from sklearn import linear_model
 import pdb
-pdb.set_trace()
+#pdb.set_trace()
 reg = linear_model.LinearRegression()
 reg.fit(feature_train, target_train)
-pdb.set_trace()
+#pdb.set_trace()
 print("Params of LinearRegression={0}".format(reg.get_params()))
 print("reg.coef_={0}".format(reg.coef_))
 print("reg.intercept_={0}".format(reg.intercept_))
+
+from sklearn.metrics import accuracy_score
+pred = reg.predict(feature_test)
+#score = accuracy_score(target_test, pred)
+#print("score={0}".format(score))
+
+# create combined train data
+#combined_train = [[0.0 for i in range(len(2)] for j in range(len(feature_train))]
+#for i in range(len(feature_train):
+#	for j in range(len(2):
+#		combined_train[i][0] = feature_
+score = reg.score(feature_train, target_train)
+print("score={0}".format(score))
+pdb.set_trace()
 
 
 
