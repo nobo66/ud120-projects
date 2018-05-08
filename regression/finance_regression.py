@@ -21,9 +21,10 @@ dictionary = pickle.load( open("../final_project/final_project_dataset_modified.
 
 ### list the features you want to look at--first item in the 
 ### list will be the "target" feature
+# reverted for Lesson7-46
+features_list = ["bonus", "salary"]
 # changed for Lesson7-44
-#features_list = ["bonus", "salary"]
-features_list = ["bonus", "long_term_incentive"]
+#features_list = ["bonus", "long_term_incentive"]
 data = featureFormat( dictionary, features_list, remove_any_zeroes=True)
 target, features = targetFeatureSplit( data )
 
@@ -92,6 +93,13 @@ try:
     plt.plot( feature_test, reg.predict(feature_test) )
 except NameError:
     pass
+# added for Lesson7-46
+reg.fit(feature_test, target_test)
+plt.plot(feature_train, reg.predict(feature_train), color="b") 
+print("parameters for regression line with test data are below.")
+print("reg.coef_={0}".format(reg.coef_))
+print("reg.intercept_={0}".format(reg.intercept_))
+
 plt.xlabel(features_list[1])
 plt.ylabel(features_list[0])
 plt.legend()
