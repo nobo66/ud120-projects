@@ -25,14 +25,14 @@ ages_train, ages_test, net_worths_train, net_worths_test = train_test_split(ages
 
 ### fill in a regression here!  Name the regression object reg so that
 ### the plotting code below works, and you can see what your regression looks like
-
-
-
-
-
-
-
-
+from sklearn import linear_model
+import pdb
+reg = linear_model.LinearRegression()
+reg.fit(ages_train, net_worths_train)
+#pdb.set_trace()
+print("Params of LinearRegression={0}".format(reg.get_params()))
+print("reg.coef_={0}".format(reg.coef_))
+print("reg.intercept_={0}".format(reg.intercept_))
 
 
 
