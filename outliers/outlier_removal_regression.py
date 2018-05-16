@@ -74,6 +74,9 @@ if len(cleaned_data) > 0:
         print("Params of LinearRegression after cleaning={0}".format(reg.get_params()))
         print("reg.coef_={0}".format(reg.coef_))
         print("reg.intercept_={0}".format(reg.intercept_))
+        score = reg.score(ages_test, net_worths_test)
+        print("score with test data is {0}".format(score))
+
         #pdb.set_trace()
 
         plt.plot(ages, reg.predict(ages), color="blue")
