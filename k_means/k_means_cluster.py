@@ -43,6 +43,17 @@ data_dict = pickle.load( open("../final_project/final_project_dataset.pkl", "r")
 ### there's an outlier--remove it! 
 data_dict.pop("TOTAL", 0)
 
+# Lesson9-22
+max_eso = 0
+min_eso = 1000000000000000
+for person in data_dict.values():
+    eso = person['exercised_stock_options']
+    if type(eso) is int and eso < min_eso:
+        min_eso = eso
+    if type(eso) is int and eso > max_eso:
+        max_eso = eso
+print("maximum exercised_stock_options is {0}".format(max_eso))
+print("minimum exercised_stock_options is {0}".format(min_eso))
 
 ### the input features we want to use 
 ### can be any key in the person-level dictionary (salary, director_fees, etc.) 
