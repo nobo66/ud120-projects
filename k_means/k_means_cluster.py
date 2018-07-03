@@ -55,6 +55,18 @@ for person in data_dict.values():
 print("maximum exercised_stock_options is {0}".format(max_eso))
 print("minimum exercised_stock_options is {0}".format(min_eso))
 
+# Lesson9-23
+max_salary = 0
+min_salary = 1000000000000000
+for person in data_dict.values():
+    salary = person['salary']
+    if type(salary) is int and salary < min_salary:
+        min_salary = salary
+    if type(salary) is int and salary > max_salary:
+        max_salary = salary
+print("maximum salary is {0}".format(max_salary))
+print("minimum salary is {0}".format(min_salary))
+
 ### the input features we want to use 
 ### can be any key in the person-level dictionary (salary, director_fees, etc.) 
 feature_1 = "salary"
