@@ -82,7 +82,8 @@ scaler = MinMaxScaler()
 scaled_data = scaler.fit_transform(data)
 #poi, finance_features = targetFeatureSplit( data )
 poi, finance_features = targetFeatureSplit( scaled_data )
-
+print("$200,000 sarary is scaled to {0}.".format(200000*scaler.scale_[1]))
+print("$1 million exercised_stock_options is scaled to {0}.".format(1000000*scaler.scale_[2]))
 
 
 
