@@ -38,14 +38,17 @@ def parseOutText(f):
         stemmer = SnowballStemmer("english")
         word_list = text_string.split()
         stem_dictionary = {}
+        words2 = ""
         for word in word_list:
             stem_dictionary[word] = stemmer.stem(word)
+            words2 += stemmer.stem(word) + " "
+        words2 = words2[:-1]
         words = text_string
         for key, value in stem_dictionary.iteritems():
             words =  words.replace(key, value)
 
     import pdb; pdb.set_trace()
-    return words
+    return words2
 
     
 
