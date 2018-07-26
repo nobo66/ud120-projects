@@ -79,6 +79,7 @@ pickle.dump( from_data, open("your_email_authors.pkl", "w") )
 
 
 ### in Part 4, do TfIdf vectorization here
+#Lesson11-20
 from sklearn.feature_extraction.text import TfidfVectorizer
 #vectorizer = TfidfVectorizer()
 #X = vectorizer.fit_transform(word_data)
@@ -86,3 +87,8 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 vectorizer2 = TfidfVectorizer(stop_words="english")
 X2 = vectorizer2.fit_transform(word_data)
 print "number of unique words is {0}.".format(len(vectorizer2.get_feature_names()))
+
+#Lesson11-21
+print "word 34597 is '{0}'.".format(vectorizer2.get_feature_names()[34597])
+
+
