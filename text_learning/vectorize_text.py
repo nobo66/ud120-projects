@@ -41,7 +41,7 @@ for name, from_person in [("sara", from_sara), ("chris", from_chris)]:
     for path in from_person:
         ### only look at first 200 emails when developing
         ### once everything is working, remove this line to run over full dataset
-        temp_counter += 1
+        #temp_counter += 1
         if temp_counter < 200:
             path = os.path.join('..', path[:-1])
             print path
@@ -80,6 +80,9 @@ pickle.dump( from_data, open("your_email_authors.pkl", "w") )
 
 ### in Part 4, do TfIdf vectorization here
 from sklearn.feature_extraction.text import TfidfVectorizer
-vectorizer = TfidfVectorizer()
-vectorizer.fit_transform(word_data)
+#vectorizer = TfidfVectorizer()
+#X = vectorizer.fit_transform(word_data)
 
+vectorizer2 = TfidfVectorizer(stop_words="english")
+X2 = vectorizer2.fit_transform(word_data)
+print "number of unique words is {0}.".format(len(vectorizer2.get_feature_names()))
