@@ -38,6 +38,7 @@ labels_train   = labels_train[:150]
 
 
 ### your code goes here
+# Lesson12-26
 from sklearn import tree
 from sklearn.metrics import accuracy_score
 clf = tree.DecisionTreeClassifier()
@@ -46,4 +47,14 @@ predict = clf.predict(features_test)
 accuracy = accuracy_score(labels_test, predict)
 print "accuracy is {0}".format(accuracy)
 
+# Lesson12-27
+max_importance = 0
+feature_number = 0
+for idx, importance in enumerate(clf.feature_importances_):
+    if importance > max_importance:
+        max_importance = importance
+        feature_number = idx
+    #if importance > 0.2:
+        print "sample importance[{0}]={1}".format(idx, importance)
+print "maximum importance is {0}. number of the feature is {1}.".format(max_importance, feature_number)
 
