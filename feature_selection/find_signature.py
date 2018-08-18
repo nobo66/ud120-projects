@@ -58,3 +58,5 @@ for idx, importance in enumerate(clf.feature_importances_):
         print "sample importance[{0}]={1}".format(idx, importance)
 print "maximum importance is {0}. number of the feature is {1}.".format(max_importance, feature_number)
 
+# Lesson12-18
+print "most powerful word is '{0}'".format(vectorizer.get_feature_names()[feature_number])
