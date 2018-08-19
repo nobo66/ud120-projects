@@ -52,8 +52,8 @@ for name, from_person in [("sara", from_sara), ("chris", from_chris)]:
             #import pdb; pdb.set_trace()
             ### use str.replace() to remove any instances of the words
             # Lesson12-29
-            ### ["sara", "shackleton", "chris", "germani", "sshacklensf"]
-            removal_words = ["sara", "shackleton", "chris", "germani", "sshacklensf"]
+            ### ["sara", "shackleton", "chris", "germani", "sshacklensf", "cgermannsf"]
+            removal_words = ["sara", "shackleton", "chris", "germani", "sshacklensf", "cgermannsf"]
             for removal_word in removal_words:
                 stemmed_text = stemmed_text.replace(removal_word, "")
             ### append the text to word_data
