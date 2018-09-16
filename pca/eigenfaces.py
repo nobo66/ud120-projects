@@ -144,3 +144,15 @@ eigenface_titles = ["eigenface %d" % i for i in range(eigenfaces.shape[0])]
 plot_gallery(eigenfaces, eigenface_titles, h, w)
 
 pl.show()
+
+#lesson13-34
+print "pca.explained_variance_ratio_ is below."
+print pca.explained_variance_ratio_
+
+#lesson13-35
+from sklearn.metrics import f1_score
+print "f1_score macro is {0}.".format(f1_score(y_test, y_pred, average='macro'))
+print "f1_score micro is {0}.".format(f1_score(y_test, y_pred, average='micro'))
+print "f1_score weighted is {0}.".format(f1_score(y_test, y_pred, average='weighted'))
+print "f1_score weighted is below.\n {0}.".format(f1_score(y_test, y_pred, average=None))
+
