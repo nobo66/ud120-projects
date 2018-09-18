@@ -68,7 +68,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random
 # dataset): unsupervised feature extraction / dimensionality reduction
 #lesson13-35
 #n_components = 150
-n_components = 10
+n_components = 300
 
 print "Extracting the top %d eigenfaces from %d faces" % (n_components, X_train.shape[0])
 t0 = time()
@@ -153,8 +153,8 @@ print pca.explained_variance_ratio_
 
 #lesson13-35
 from sklearn.metrics import f1_score
-print "f1_score macro is {0}.".format(f1_score(y_test, y_pred, average='macro'))
-print "f1_score micro is {0}.".format(f1_score(y_test, y_pred, average='micro'))
-print "f1_score weighted is {0}.".format(f1_score(y_test, y_pred, average='weighted'))
-print "f1_score weighted is below.\n {0}.".format(f1_score(y_test, y_pred, average=None))
+#print "f1_score macro is {0}.".format(f1_score(y_test, y_pred, average='macro'))
+#print "f1_score micro is {0}.".format(f1_score(y_test, y_pred, average='micro'))
+#print "f1_score weighted is {0}.".format(f1_score(y_test, y_pred, average='weighted'))
+#print "f1_score weighted is below.\n {0}.".format(f1_score(y_test, y_pred, average=None))
 
