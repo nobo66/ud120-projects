@@ -28,5 +28,10 @@ labels, features = targetFeatureSplit(data)
 
 
 ### it's all yours from here forward!  
-
+# Lesson14-17
+from sklearn import tree
+clf = tree.DecisionTreeClassifier()
+clf = clf.fit(features, labels)
+score = clf.score(features, labels)
+print "score is {0}".format(score)
 
