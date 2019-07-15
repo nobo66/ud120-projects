@@ -49,4 +49,5 @@ import numpy
 unique, counts = numpy.unique(predict, return_counts=True)
 predict_dict = dict(zip(unique, counts))
 print "num of predicted pois in test data is {0}".format(predict_dict[1])
+# Lesson15-29
 print "num of test data is {0}".format(len(labels_test))
