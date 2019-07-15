@@ -51,3 +51,9 @@ predict_dict = dict(zip(unique, counts))
 print "num of predicted pois in test data is {0}".format(predict_dict[1])
 # Lesson15-29
 print "num of test data is {0}".format(len(labels_test))
+# Lesson15-30
+unique, counts = numpy.unique(labels_test, return_counts=True)
+labels_test_dict = dict(zip(unique, counts))
+print "num of pois in the test data is {0}".format(labels_test_dict[1])
+print "num of innocent people in the test data is {0}".format(labels_test_dict[0])
+print "accuracy if no poi is predicted is {0}".format(float(labels_test_dict[0])/len(labels_test))
