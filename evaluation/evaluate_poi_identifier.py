@@ -65,3 +65,7 @@ for i, j in zip(predict, labels_test):
     if i==1 and j==1:
         true_positive += 1
 print "true_positive={0}".format(true_positive)
+# Lesson15-32
+from sklearn.metrics import precision_score
+precision = precision_score(labels_test, predict)
+print "precision={0}".format(precision)
