@@ -69,3 +69,7 @@ print "true_positive={0}".format(true_positive)
 from sklearn.metrics import precision_score
 precision = precision_score(labels_test, predict)
 print "precision={0}".format(precision)
+# Lesson15-33
+from sklearn.metrics import recall_score
+recall = recall_score(labels_test, predict)
+print "recall={0}".format(recall)
