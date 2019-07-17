@@ -57,3 +57,11 @@ labels_test_dict = dict(zip(unique, counts))
 print "num of pois in the test data is {0}".format(labels_test_dict[1])
 print "num of innocent people in the test data is {0}".format(labels_test_dict[0])
 print "accuracy if no poi is predicted is {0}".format(float(labels_test_dict[0])/len(labels_test))
+# Lesson15-31
+print "predict={0}".format(predict)
+print "labels_test={0}".format(labels_test)
+true_positive=0
+for i, j in zip(predict, labels_test):
+    if i==1 and j==1:
+        true_positive += 1
+print "true_positive={0}".format(true_positive)
